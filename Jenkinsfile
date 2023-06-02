@@ -1,24 +1,18 @@
-@Library("shared-library-nandhini") _
 pipeline {
     agent {
         label 'java-build-node'
     }
     stages {
-        stage('Build') {
+        stage('BuildMavenJar') {
             steps {
-                script{
-                    build()
-                }
+                sh 'mvn -B -DskipTests clean package'
             }
-            
         }
         stage('Test') {
             steps {
-                script{
-                    test()
-                }
+                sh 'mvn test'
             }
-             post {
+            post {
                 always {
                     junit 'target/surefire-reports/*.xml'
                 }
