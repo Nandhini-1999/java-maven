@@ -5,7 +5,7 @@ pipeline {
         label 'java-build-node'
     }
     stages {
-        stage('BuildMavenJar') {
+        stage('Build') {
             steps {
                 script{
                     build()
@@ -26,9 +26,16 @@ pipeline {
                 }
             }
         }
-        stage('Deliver-executeJava') {
+        stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'
+            }
+        }
+        stage('Pipeline status') {
+            steps {
+                script{
+                    info(message:"Pipeline executed successfully")
+                }
             }
         }
     }
