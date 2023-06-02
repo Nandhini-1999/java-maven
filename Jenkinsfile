@@ -5,12 +5,18 @@ pipeline {
     stages {
         stage('BuildMavenJar') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                script{
+                    build()
+                }
+                //sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                script{
+                    test()
+                }
+                //sh 'mvn test'
             }
             post {
                 always {
