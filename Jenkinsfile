@@ -31,12 +31,12 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
-        stage('Pipeline status') {
-            steps {
-                script{
-                    info(message:"Pipeline executed successfully")
-                }
-            }
-        }
+//         stage('Pipeline status') {
+//             steps {
+//                 script{
+//                     info(message:"Pipeline executed successfully")
+//                 }
+//             }
+//         }
     }
 }
