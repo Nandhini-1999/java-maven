@@ -40,4 +40,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Test Reports
-          path: ${{ steps.publish-test-results.outputs.report-path }}
+          path: test-reports
