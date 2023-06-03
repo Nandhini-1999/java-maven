@@ -18,3 +18,7 @@ jobs:
         with:
           java-version: 11
           distribution: 'adopt'
+          
+      - name: Build
+        run: |
+           mvn -B -DskipTests clean package
