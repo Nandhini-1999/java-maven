@@ -41,3 +41,6 @@ jobs:
         with:
           name: Test Reports
           path: test-reports
+          
+      - name: Deliver
+        run: ./jenkins/scripts/deliver.sh
