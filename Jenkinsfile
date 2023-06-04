@@ -31,6 +31,12 @@ pipeline {
                 sh './jenkins/scripts/deliver.sh'
             }
         }
+        
+        stage('Checking src') {
+            steps{
+                mySharedLibrary()
+            }
+        }
 
     }
 }
