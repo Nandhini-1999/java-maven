@@ -1,0 +1,25 @@
+name: Reusable Workflow
+
+on:
+  # push:
+  #   branches:
+  #     - main  
+  # pull_request:
+  #   branches:
+  #     - main  
+
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Execute Maven Goals
+        uses: ./.github/workflows/maven-goals.yml
+        env:
+          GOAL: '-B -DskipTests clean package'
+
