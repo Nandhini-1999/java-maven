@@ -1,13 +1,6 @@
 name: Reusable Workflow
 
 on:
-  # push:
-  #   branches:
-  #     - main  
-  # pull_request:
-  #   branches:
-  #     - main  
-
   workflow_dispatch:
   
 jobs:
@@ -20,6 +13,5 @@ jobs:
 
       - name: Execute Maven Goals
         uses: ./.github/workflows/maven-goals.yml
-        env:
+        with:
           GOAL: '-B -DskipTests clean package'
-
