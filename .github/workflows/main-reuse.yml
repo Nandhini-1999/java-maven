@@ -10,6 +10,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Build
         uses: ./.github/workflows/maven-goals.yml
         with:
@@ -19,6 +21,8 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Build
         uses: ./.github/workflows/maven-goals.yml
         with:
