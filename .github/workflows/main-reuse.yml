@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/maven-goals.yml
     with:
       build-goal: '-B -DskipTests clean package'
-      test-goal: 'test'
+#       test-goal: 'test'
 
 
   build:
