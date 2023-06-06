@@ -15,11 +15,11 @@ on:
         required: false
         type: string
         default: "."
-      GOAL1:
+      build-goal:
         required: false
         type: string
         default: ""
-      GOAL2:
+      test-goal:
         required: false
         type: string
         default: ""
@@ -43,7 +43,7 @@ jobs:
           distribution: 'adopt' 
           
       - name: Build
-        run: mvn ${{inputs.GOAL1}}
+        run: mvn ${{inputs.build-goal}}
         
       - name: Test
-        run: mvn ${{inputs.GOAL2}}
+        run: mvn ${{inputs.test-goal}}
