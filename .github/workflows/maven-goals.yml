@@ -1,16 +1,33 @@
-name: Maven Goals
+name: Maven Workflow
 
 on:
-  push:
-    branches:
-      - main  
-
+  workflow_call:
+    inputs:
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      setup:
+        required: false
+        type: string
+        default: ""
+      working_directory:
+        required: false
+        type: string
+        default: "."
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+
+    runs-on: ${{inputs.runs_on}}
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
