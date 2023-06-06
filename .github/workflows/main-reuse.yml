@@ -15,13 +15,13 @@ jobs:
     needs: check
     uses: ./.github/workflows/maven-build.yml
     with:
-      goal: '-B -DskipTests clean package'
+      build-goal: '-B -DskipTests clean package'
       
   maven-test:
     needs: maven-compile
     uses: ./.github/workflows/maven-test.yml
     with:
-      goal: 'test'
+      test-goal: 'test'
 
 
   test:
