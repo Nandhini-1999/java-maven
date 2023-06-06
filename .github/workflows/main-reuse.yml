@@ -17,6 +17,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Check
-        run: echo 'Success'
+#     steps:
+#       - name: Check
+#         run: echo 'Success'
