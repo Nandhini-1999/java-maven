@@ -1,17 +1,17 @@
-name: Reusable Workflow
+name: JAVA
 
 on:
-  workflow_dispatch:
-  
+  push:
+    branches:
+      - main
+
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  verify-maven:
+    uses: ./.github/workflows/maven-goals.yml
+    env:
+      GOAL: '-version'
+      
+  runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Execute Maven Goals
-        uses: ./.github/workflows/maven-goals.yml
-        env:
-          GOAL: '-B -DskipTests clean package'
+       - name: Check
+         run: echo 'Success'
