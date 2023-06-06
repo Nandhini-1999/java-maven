@@ -1,4 +1,4 @@
-name: Maven Workflow
+name: Maven Build
 
 on:
   workflow_call:
@@ -44,7 +44,5 @@ jobs:
           cache: maven 
           
       - name: Build
-        run: mvn ${{inputs.build-goal}}
+        run: mvn ${{inputs.goal}}
         
-      - name: Test
-        run: mvn ${{inputs.test-goal}}
