@@ -45,4 +45,4 @@ jobs:
 #           maven-version: 3.x  
           
       - name: Build with Maven
-        run: mvn -s ${{ inputs.GOAL }}
+        run: mvn ${{ inputs.GOAL }}
