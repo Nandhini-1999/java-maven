@@ -8,24 +8,30 @@ on:
   workflow_dispatch:
 
 jobs:
-  maven-compile-test:
-    uses: ./.github/workflows/maven-goals.yml
-    with:
-      build-goal: '-B -DskipTests clean package'
-      test-goal: 'test'
-      
   check:
     uses: ./.github/workflows/sequence.yml
+    
+  maven-compile:
+    needs: check
+    uses: ./.github/workflows/maven-build.yml
+    with:
+      goal: '-B -DskipTests clean package'
+      
+  maven-test:
+    needs: maven-compile
+    uses: ./.github/workflows/maven-test.yml
+    with:
+      goal: 'test'
 
 
   test:
-#     uses: ./.github/workflows/maven-goals.yml
+#     uses: ./.github/workflows/maven-test.yml
 #     with:
 # #       build-goal: '-B -DskipTests clean package'
 #       test-goal: 'test'
       
       
-    needs: [maven-compile-test]
+    needs: maven-test
 
     runs-on: ubuntu-latest
 
