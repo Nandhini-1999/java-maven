@@ -2,17 +2,28 @@ name: Reusable Workflow
 
 on:
   workflow_dispatch:
-  workflow_call:
   
+# jobs:
+# call-workflow:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+# #       - name: Checkout repository
+# #         uses: actions/checkout@v2
+
+#       - name: Execute Maven Goals
+#         uses: ./.github/workflows/maven-goals.yml
+#         with:
+#           GOAL: '-B -DskipTests clean package'
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Execute Maven Goals
-        uses: ./.github/workflows/maven-goals.yml
-        with:
-          GOAL: '-B -DskipTests clean package'
+  call-workflow:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Execute Maven Goals
+          uses: ./.github/workflows/maven-goals.yml
+          with:
+            GOAL: '-B -DskipTests clean package'
+          
+        - name: Execute Unit test
+          uses: ./.github/workflows/unitTest-coverage.yml
