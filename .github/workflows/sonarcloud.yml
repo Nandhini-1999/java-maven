@@ -19,10 +19,10 @@ on:
         required: false
         type: string
         default: "."
-      project-key:
-        required: false
-        type: string
-        default: ""
+#       project-key:
+#         required: false
+#         type: string
+#         default: ""
 jobs:
   build:
     defaults:
@@ -63,5 +63,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-#         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gha-demo_my-app
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey= ${{ inputs.project-key }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gha-demo_my-app
+#         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey= ${{ inputs.project-key }}
