@@ -45,25 +45,5 @@ jobs:
       - name: Build
         run: mvn ${{inputs.build-goal}}
         
-  test:
-     defaults:
-      run:
-        working-directory: ${{inputs.working_directory}}
-
-     runs-on: ${{inputs.runs_on}}
-
-     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: 11  
-          distribution: 'adopt' 
-          
-#       - name: Build
-#         run: mvn ${{inputs.build-goal}}
-        
       - name: Test
         run: mvn ${{inputs.test-goal}}
