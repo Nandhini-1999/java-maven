@@ -1,48 +1,3 @@
-# name: Sequential Workflow
-
-# on:
-# #   push:
-# #     branches:
-# #       - master
-      
-#   workflow_dispatch:
-
-# jobs:
-#   build:
-#     name: Build Job
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v2
-      
-#       - name: Run Build
-#         uses: ./.github/workflows/maven-goals.yml
-#         with:
-#           build-goal: '-B -DskipTests clean package'
-  
-#   job2:
-#     name: Second Job
-#     runs-on: ubuntu-latest
-#     needs: build
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v2
-      
-#       - name: Run Job 2
-#         run: echo "Running Job 2"
-  
-#   job3:
-#     name: Third Job
-#     runs-on: ubuntu-latest
-#     needs: job2
-#     steps:
-#       - name: Checkout Repository
-#         uses: actions/checkout@v2
-      
-#       - name: Run Job 3
-#         run: echo "Running Job 3"
-
-
 name: Sequential Workflow
 
 on:
@@ -53,14 +8,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  job1:
-    name: First Job
+  build:
+    name: Build Job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
       
-      - name: Run Job 1
+      - name: Run Build
         uses: ./.github/workflows/maven-goals.yml
         with:
           build-goal: '-B -DskipTests clean package'
@@ -68,7 +23,7 @@ jobs:
   job2:
     name: Second Job
     runs-on: ubuntu-latest
-    needs: job1
+    needs: build
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
@@ -86,4 +41,5 @@ jobs:
       
       - name: Run Job 3
         run: echo "Running Job 3"
+
 
