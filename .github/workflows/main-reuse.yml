@@ -3,7 +3,7 @@ name: JAVA
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   verify-maven:
