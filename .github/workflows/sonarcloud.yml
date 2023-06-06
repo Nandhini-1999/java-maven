@@ -58,7 +58,7 @@ name: SonarCloud
 #     branches:
 #       - master
 on:
-  workflow_call:
+  workflow_dispatch:
 jobs:
   build:
     name: Build and analyze
