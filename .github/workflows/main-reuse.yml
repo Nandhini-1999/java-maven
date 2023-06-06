@@ -13,6 +13,9 @@ jobs:
     with:
       build-goal: '-B -DskipTests clean package'
       test-goal: 'test'
+      
+  check:
+    uses: ./.github/workflows/sequence.yml
 
 
   test:
