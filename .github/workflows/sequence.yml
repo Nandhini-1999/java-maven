@@ -5,7 +5,7 @@ on:
 #     branches:
 #       - master
       
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   build:
@@ -16,9 +16,8 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run Build
-        uses: ./.github/workflows/maven-goals.yml
-        with:
-          build-goal: '-B -DskipTests clean package'
+        run: echo "Success"
+  
   
   job2:
     name: Second Job
