@@ -1,0 +1,43 @@
+name: Maven Test
+
+on:
+  workflow_call:
+    inputs:
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      setup:
+        required: false
+        type: string
+        default: ""
+      working_directory:
+        required: false
+        type: string
+        default: "."
+      goal:
+        required: false
+        type: string
+        default: ""
+
+jobs:
+  test:
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+
+    runs-on: ${{inputs.runs_on}}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven 
+        
+      - name: Test
+        run: mvn ${{inputs.goal}}
