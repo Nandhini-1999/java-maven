@@ -23,7 +23,7 @@ jobs:
 
 
   build:
-    needs: [maven-build, maven-test, maven-coverage]
+#     needs: [maven-build, maven-test, maven-coverage]
 
     runs-on: ubuntu-latest
 
