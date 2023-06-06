@@ -15,7 +15,11 @@ on:
         required: false
         type: string
         default: "."
-      GOAL:
+      GOAL1:
+        required: false
+        type: string
+        default: ""
+      GOAL2:
         required: false
         type: string
         default: ""
@@ -36,13 +40,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: 11  
-          distribution: 'adopt'
-
-#       - name: Set up Maven
-#         uses: actions/setup-java@v2
-#         with:
-#           java-version: 11 
-#           maven-version: 3.x  
+          distribution: 'adopt' 
           
-      - name: Build with Maven
-        run: mvn ${{ inputs.GOAL }}
+      - name: Build
+        run: mvn ${{inputs.GOAL1}}
+        
+      - name: Test
+        run: mvn ${{inputs.GOAL2}}
