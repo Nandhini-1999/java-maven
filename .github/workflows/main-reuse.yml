@@ -6,39 +6,18 @@ on:
       - master
 
 jobs:
-  maven-build:
-    name: Build
+  maven-compile-test:
+    uses: ./.github/workflows/maven-goals.yml
+    with:
+      GOAL1: '-B -DskipTests clean package'
+      GOAL2: 'test'
+
+
+  build:
+    needs: [maven-compile-test]
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Build
-        uses: ./.github/workflows/maven-goals.yml
-        with:
-          GOAL: '-B -DskipTests clean package'
-
-  maven-test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Build
-        uses: ./.github/workflows/maven-goals.yml
-        with:
-          GOAL: 'test'
-
-#   maven-coverage:
-#     uses: ./.github/workflows/maven-goals.yml
-#     with:
-#       GOAL: 'jacoco:report'
-
-
-#   build:
-#     needs: [maven-build, maven-test]
-
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Check
-#         run: echo 'Success'
+      - name: Check
+        run: echo 'Success'
