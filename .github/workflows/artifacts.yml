@@ -21,9 +21,9 @@ jobs:
           distribution: 'temurin'
           cache: maven 
 
-#     - name: Build and Test
-#       run: |
-#         ./gradlew build
+    - name: Build and Test
+      run: |
+        mvn test
 
     - name: Publish Test Results
       if: always()
