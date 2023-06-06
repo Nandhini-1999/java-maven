@@ -30,7 +30,7 @@ jobs:
       test-goal: 'test'
 
   test:
-      needs: [maven-compile-test]
+      needs: [maven-compile-test, maven-test]
 
       runs-on: ubuntu-latest
 
