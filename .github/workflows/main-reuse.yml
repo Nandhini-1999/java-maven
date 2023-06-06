@@ -1,9 +1,11 @@
 name: JAVA
 
 on:
-  push:
-    branches:
-      - master
+#   push:
+#     branches:
+#       - master
+      
+  workflow_dispatch:
 
 jobs:
   maven-compile-test:
