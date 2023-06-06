@@ -15,7 +15,7 @@ on:
         required: false
         type: string
         default: "."
-      goal:
+      test-goal:
         required: false
         type: string
         default: ""
@@ -40,4 +40,4 @@ jobs:
           cache: maven 
         
       - name: Test
-        run: mvn ${{inputs.goal}}
+        run: mvn ${{inputs.test-goal}}
