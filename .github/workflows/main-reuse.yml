@@ -9,8 +9,8 @@ jobs:
   maven-compile-test:
     uses: ./.github/workflows/maven-goals.yml
     with:
-      GOAL1: '-B -DskipTests clean package'
-      GOAL2: 'test'
+      build-goal: '-B -DskipTests clean package'
+      test-goal: 'test'
 
 
   build:
