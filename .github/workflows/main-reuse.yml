@@ -1,6 +1,7 @@
 name: JAVA
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -8,10 +9,15 @@ on:
 jobs:
   verify-maven:
     uses: ./.github/workflows/maven-goals.yml
-    env:
+    with:
       GOAL: '-version'
-      
-  runs-on: ubuntu-latest
+
+
+  build:
+    needs: [verify-maven]
+
+    runs-on: ubuntu-latest
+
     steps:
-       - name: Check
-         run: echo 'Success'
+      - name: Check
+        run: echo 'Success'
