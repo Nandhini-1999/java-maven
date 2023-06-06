@@ -30,11 +30,11 @@ jobs:
 #       GOAL: 'jacoco:report'
 
 
-  build:
-    needs: [maven-build, maven-test]
+#   build:
+#     needs: [maven-build, maven-test]
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Check
-        run: echo 'Success'
+#     steps:
+#       - name: Check
+#         run: echo 'Success'
