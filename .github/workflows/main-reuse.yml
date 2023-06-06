@@ -15,12 +15,12 @@ jobs:
       test-goal: 'test'
 
 
-  build:
+  test:
     needs: [maven-compile-test]
 
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check
-        run: echo 'Success'
+      - name: Verify
+        uses: ./.github/workflows/sequence.yml
         
