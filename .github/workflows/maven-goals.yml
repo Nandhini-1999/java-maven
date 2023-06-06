@@ -15,6 +15,10 @@ on:
         required: false
         type: string
         default: "."
+      GOAL:
+        required: false
+        type: string
+        default: ""
 
 jobs:
   build:
@@ -40,4 +44,4 @@ jobs:
           maven-version: 3.x  
           
       - name: Build with Maven
-        run: mvn -s ${{ env.GOAL }}
+        run: mvn -s ${{ inputs.GOAL }}
