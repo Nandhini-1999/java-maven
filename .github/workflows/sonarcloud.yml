@@ -4,8 +4,8 @@ name: SonarCloud
 #     branches:
 #       - master
 on:
-#   workflow_dispatch:
-  workflow_call:
+  workflow_dispatch:
+#   workflow_call:
     inputs:
       runs_on:
         required: false
