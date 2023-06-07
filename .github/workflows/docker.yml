@@ -46,7 +46,7 @@ jobs:
         version: latest
         
     - name: Build docker image
-      run: docker build . --file Dockerfile my-app
+      run: docker build . --file Dockerfile --tag my-app:latest
 
     - name: Login to DockerHub
 #       if: ${{ github.event_name == 'release' || github.event_name == 'push' && github.ref == 'refs/heads/master' && inputs.password != ''  }}
