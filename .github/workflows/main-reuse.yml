@@ -24,7 +24,7 @@ jobs:
       test-goal: 'test'
       
   code-quality-analysis:
-    needs: check
+    needs: maven-test
     uses: ./.github/workflows/sonarcloud.yml
 #     with:
 #       project-key: 'gha-demo_java-maven'
