@@ -1,0 +1,42 @@
+name: Java-CD
+
+on:
+#   push:
+#     branches:
+#       - main
+  workflow_dispatch:
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Build
+        run: |
+           mvn -B -DskipTests clean package
+           
+      - name: Test
+        run: |
+           mvn test
+
+      - name: Publish Test Results
+        if: always()
+        run: |
+          mkdir -p test-reports
+          cp -r target/surefire-reports test-reports
+          ls -R test-reports
+          echo "::set-output name=report-path::test-reports"
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: Test Reports
+          path: test-reports
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
