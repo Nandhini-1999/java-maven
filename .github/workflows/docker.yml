@@ -46,7 +46,7 @@ jobs:
         version: latest
         
     - name: Build docker image
-      run: docker build . --file Dockerfile nandhini1999/my-app
+      run: docker build . --file Dockerfile my-app
 
     - name: Login to DockerHub
 #       if: ${{ github.event_name == 'release' || github.event_name == 'push' && github.ref == 'refs/heads/master' && inputs.password != ''  }}
@@ -56,6 +56,6 @@ jobs:
         password: ${{ inputs.password }}
         
     - name: Push the docker image
-      run: docker push nandhini1999/my-app
+      run: docker push nandhini1999/sample/my-app
 
 
