@@ -18,9 +18,11 @@ on:
       username:
          description: "Username"
          required: true
+         default: "nandhini1999"
       password:
          description: "Password"
          required: true
+         default: "Nandhini_99"
  
 #   ghcr_username:
 #     description: "GHCR username. Usually set from the github.actor variable"
