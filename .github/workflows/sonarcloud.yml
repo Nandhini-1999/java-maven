@@ -23,18 +23,18 @@ on:
 #         required: false
 #         type: string
 #         default: ""
-      SONAR_ORGANIZATION:
-        required: false
-        type: string
-        default: "GHA-Demo"
-      SONAR_ORGANIZATION_KEY:
-        required: false
-        type: string
-        default: "gha-demo"
-      SONARQUBE_HOST_URL:
-        required: false
-        type: string
-        default: "sonarcloud.io"
+#       SONAR_ORGANIZATION:
+#         required: false
+#         type: string
+#         default: "GHA-Demo"
+#       SONAR_ORGANIZATION_KEY:
+#         required: false
+#         type: string
+#         default: "gha-demo"
+#       SONARQUBE_HOST_URL:
+#         required: false
+#         type: string
+#         default: "sonarcloud.io"
       
 jobs:
   build:
@@ -76,9 +76,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
-          SONARQUBE_HOST_URL: ${{ inputs.SONARQUBE_HOST_URL }}
-          SONAR_ORGANIZATION_KEY: ${{ inputs.SONAR_ORGANIZATION_KEY }}
+#           SONAR_ORGANIZATION: ${{ inputs.SONAR_ORGANIZATION }}
+#           SONARQUBE_HOST_URL: ${{ inputs.SONARQUBE_HOST_URL }}
+#           SONAR_ORGANIZATION_KEY: ${{ inputs.SONAR_ORGANIZATION_KEY }}
 #         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gha-demo_my-app -Dsonar.host.url= ${{ inputs.SONARQUBE_HOST_URL }} -Dsonar.login= ${{ secrets.SONAR_TOKEN }}
 #         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey= ${{ inputs.project-key }}
           run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey= gha-demo_my-app
