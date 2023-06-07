@@ -5,7 +5,6 @@ on:
 #     branches:
 #       - main
     workflow_dispatch:
-    workflow_call:
 
 jobs:
   test_reports_job:
@@ -24,10 +23,7 @@ jobs:
 
     - name: Build and Test
       run: |
-        mvn compile
         mvn test
-        mvn clean package -DskipTests=true
-
     - name: Publish Test Results
       if: always()
       run: |
@@ -35,10 +31,10 @@ jobs:
         cp -r target/surefire-reports test-reports
         ls -R test-reports
         echo "::set-output name=report-path::test-reports"
-
-    - name: Upload Artifact
+        
+    - name: Upload Test Reports
       if: always()
       uses: actions/upload-artifact@v2
       with:
-        name: artifact
+        name: Test Reports
         path: test-reports
