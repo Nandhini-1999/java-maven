@@ -32,7 +32,7 @@ jobs:
   maven-package:
     if: always()
     needs: code-quality-analysis
-    uses: ./.github/workflows/maven-package.yml
+    uses: ./.github/workflows/package.yml
     with:
       test-goal: 'clean package -DskipTests=true'
       
