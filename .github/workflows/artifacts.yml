@@ -24,6 +24,8 @@ jobs:
 
     - name: Build and Test
       run: |
+        mvn compile
+        mvn test
         mvn clean package -DskipTests=true
 
     - name: Publish Test Results
