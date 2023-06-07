@@ -41,7 +41,7 @@ jobs:
         run: docker pull nandhini1999/sample:latest
 
       - name: Tag Docker image
-        run: docker tag nandhini1999/sample:latest 215099615090.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo:latest
+        run: docker tag nandhini1999/sample:latest 215099615090.public.ecr.aws/f4w6n6b1/my-ecr-repo:latest
 
       - name: Push Docker image to ECR
-        run: docker push 215099615090.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo:latest
+        run: docker push 215099615090.public.ecr.aws/f4w6n6b1/my-ecr-repo:latest
