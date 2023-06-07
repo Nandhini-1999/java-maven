@@ -34,7 +34,7 @@ on:
       SONARQUBE_HOST_URL:
         required: false
         type: string
-        default: "https://sonarcloud.io/"
+        default: "sonarcloud.io"
       
 jobs:
   build:
