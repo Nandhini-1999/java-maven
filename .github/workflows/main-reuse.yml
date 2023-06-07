@@ -11,17 +11,17 @@ jobs:
   check:
     uses: ./.github/workflows/sequence.yml
     
-#   maven-compile:
-#     needs: check
-#     uses: ./.github/workflows/maven-build.yml
-#     with:
-#       build-goal: '-B -DskipTests clean package'
+  maven-compile:
+    needs: check
+    uses: ./.github/workflows/maven-build.yml
+    with:
+      build-goal: '-B -DskipTests clean package'
       
-#   maven-test:
-#     needs: maven-compile
-#     uses: ./.github/workflows/maven-test.yml
-#     with:
-#       test-goal: 'test'
+  maven-test:
+    needs: maven-compile
+    uses: ./.github/workflows/maven-test.yml
+    with:
+      test-goal: 'test'
       
   code-quality-analysis:
     needs: check
@@ -29,12 +29,17 @@ jobs:
 #     with:
 #       project-key: 'gha-demo_java-maven'
 
-
-#   publish-report:
-#     if: always()
-#     needs: code-quality-analysis
-# #     if: always()
-#     uses: ./.github/workflows/artifacts.yml
+  maven-package:
+    if: always()
+    needs: code-quality-analysis
+    uses: ./.github/workflows/maven-package.yml
+    with:
+      test-goal: 'clean package -DskipTests=true'
+      
+  publish-report:
+    if: always()
+    needs: code-quality-analysis
+    uses: ./.github/workflows/artifacts.yml
 
 
   test:
