@@ -7,6 +7,6 @@ RUN mvn -B -f pom.xml clean package -DskipTests
 
 FROM amazoncorretto:17.0.7-al2
 EXPOSE 8081
-COPY /workspace/target/*.jar hello-world.jar
+COPY --from=build /workspace/target/*.jar hello-world.jar
 RUN sleep 60
 ENTRYPOINT ["java","-jar","/hello-world.jar"]
