@@ -34,7 +34,7 @@ jobs:
     needs: code-quality-analysis
     uses: ./.github/workflows/package.yml
     with:
-      test-goal: 'clean package -DskipTests=true'
+      package-goal: 'clean package -DskipTests=true'
       
   publish-report:
     if: always()
