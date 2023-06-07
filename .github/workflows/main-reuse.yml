@@ -45,7 +45,7 @@ jobs:
   test:
       
       
-    needs: code-quality-analysis
+    needs: publish-report
 
     runs-on: ubuntu-latest
 
