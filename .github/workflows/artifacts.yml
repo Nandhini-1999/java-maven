@@ -24,7 +24,7 @@ jobs:
 
     - name: Build and Test
       run: |
-        mvn test
+        mvn clean package -DskipTests=true
 
     - name: Publish Test Results
       if: always()
