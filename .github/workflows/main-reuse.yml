@@ -29,17 +29,17 @@ jobs:
 #     with:
 #       project-key: 'gha-demo_java-maven'
 
-  maven-package:
-    if: always()
-    needs: code-quality-analysis
-    uses: ./.github/workflows/package.yml
-    with:
-      package-goal: 'clean package -DskipTests=true'
+#   maven-package:
+#     if: always()
+#     needs: code-quality-analysis
+#     uses: ./.github/workflows/package.yml
+#     with:
+#       package-goal: 'clean package -DskipTests=true'
       
-  publish-report:
-    if: always()
-    needs: maven-package
-    uses: ./.github/workflows/artifacts.yml
+#   publish-report:
+#     if: always()
+#     needs: maven-package
+#     uses: ./.github/workflows/artifacts.yml
 
 
   test:
@@ -50,6 +50,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: publish-report
+      - name: check
         run: echo "Success"
         
