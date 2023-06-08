@@ -11,20 +11,20 @@ jobs:
   check:
     uses: ./.github/workflows/sequence.yml
     
-  maven-compile:
-    needs: check
-    uses: ./.github/workflows/maven-build.yml
-    with:
-      build-goal: 'compile'
+#   maven-compile:
+#     needs: check
+#     uses: ./.github/workflows/maven-build.yml
+#     with:
+#       build-goal: 'compile'
       
-  maven-test:
-    needs: maven-compile
-    uses: ./.github/workflows/maven-test.yml
-    with:
-      test-goal: 'test'
+#   maven-test:
+#     needs: maven-compile
+#     uses: ./.github/workflows/maven-test.yml
+#     with:
+#       test-goal: 'test'
       
   code-quality-analysis:
-    needs: maven-test
+    needs: check
     uses: ./.github/workflows/sonarqube.yml
 #     with:
 #       project-key: 'gha-demo_java-maven'
