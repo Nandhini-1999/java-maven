@@ -7,6 +7,15 @@ on:
       
   workflow_dispatch:
   workflow_call:
+    inputs:
+      host_url:
+        required: false
+        type: string
+        default: "http://65.0.128.192:9000"
+      token:
+        required: false
+        type: string
+        default: ""
 
 jobs:
   scan:
@@ -37,4 +46,4 @@ jobs:
         #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
 #         SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
 #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=http://65.0.128.192:9000 -Dsonar.token=squ_b5eba5e75d4ca575e45af60454e1ac9ca9f09320
+      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.host.url=${{inputs.host_url}} -Dsonar.token=${{inputs.token}}
