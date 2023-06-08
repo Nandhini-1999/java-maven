@@ -60,10 +60,16 @@ jobs:
        jf --version
        jf rt ping
        
-    - name: artifact
-      uses: ./.github/workflows/package.yml
+    - name: Set up JDK
+      uses: actions/setup-java@v3
       with:
-        package-goal: 'clean package -DskipTests=true'
+          java-version: '11'
+          distribution: 'temurin'
+          cache: maven 
+       
+    - name: artifact
+      run:
+        mvn -B -f pom.xml clean package -DskipTests
        
     - name: Publish JAR artifact to Artifactory
       run: |
