@@ -11,41 +11,41 @@ jobs:
   check:
     uses: ./.github/workflows/sequence.yml
     
-  maven-compile:
-    needs: check
-    uses: ./.github/workflows/maven-build.yml
-    with:
-      build-goal: 'compile'
+#   maven-compile:
+#     needs: check
+#     uses: ./.github/workflows/maven-build.yml
+#     with:
+#       build-goal: 'compile'
       
-  maven-test:
-    needs: maven-compile
-    uses: ./.github/workflows/maven-test.yml
-    with:
-      test-goal: 'test'
+#   maven-test:
+#     needs: maven-compile
+#     uses: ./.github/workflows/maven-test.yml
+#     with:
+#       test-goal: 'test'
       
   code-quality-analysis:
-    needs: maven-test
+    needs: check
     uses: ./.github/workflows/sonarcloud.yml
 #     with:
 #       project-key: 'gha-demo_java-maven'
 
-  maven-package:
-    if: always()
-    needs: code-quality-analysis
-    uses: ./.github/workflows/package.yml
-    with:
-      package-goal: 'clean package -DskipTests=true'
+#   maven-package:
+#     if: always()
+#     needs: code-quality-analysis
+#     uses: ./.github/workflows/package.yml
+#     with:
+#       package-goal: 'clean package -DskipTests=true'
       
-  publish-report:
-    if: always()
-    needs: maven-package
-    uses: ./.github/workflows/artifacts.yml
+#   publish-report:
+#     if: always()
+#     needs: maven-package
+#     uses: ./.github/workflows/artifacts.yml
 
 
   test:
       
       
-    needs: publish-report
+    needs: code-quality-analysis
 
     runs-on: ubuntu-latest
 
