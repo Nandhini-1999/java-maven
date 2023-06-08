@@ -43,6 +43,7 @@ jobs:
         JF_URL: https://jfrog.phvr.co.in
         JF_USER: admin
         JF_PASSWORD: Admin@123
+        JF_ACCESS_TOKEN: cmVmdGtuOjAxOjE3MTc3Nzc1MzQ6RHZEcHZVR1hPbDdtTGg2bTVWbEFaMUdtNFZy
 
     
     # Basic authentication credentials
@@ -73,5 +74,5 @@ jobs:
        
     - name: Publish JAR artifact to Artifactory
       run: |
-        jfrog rt u target/*.jar https://jfrog.phvr.co.in/artifactory/demo-maven/*.jar --url=https://jfrog.phvr.co.in --user=admin --password=Admin@123
+        jfrog rt u target/*.jar https://jfrog.phvr.co.in/artifactory/demo-maven/*.jar --url=https://jfrog.phvr.co.in --user=admin --password=Admin@123 --token=cmVmdGtuOjAxOjE3MTc3Nzc1MzQ6RHZEcHZVR1hPbDdtTGg2bTVWbEFaMUdtNFZy
 
