@@ -1,4 +1,4 @@
-name: Deploy in ECR
+name: ECR
 
 on:
 #   push:
