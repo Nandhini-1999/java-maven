@@ -1,0 +1,41 @@
+name: JFrog Setup
+on:
+  workflow_dispatch:
+#   workflow_call:
+    inputs:
+      runs_on:
+        required: false
+        type: string
+        default: "ubuntu-latest"
+      setup:
+        required: false
+        type: string
+        default: ""
+      working_directory:
+        required: false
+        type: string
+        default: "."
+        
+
+jobs:
+  build:
+    defaults:
+      run:
+        working-directory: ${{inputs.working_directory}}
+
+    runs-on: ${{inputs.runs_on}}
+    
+#   using: "composite"
+
+    steps:
+   
+    - name: Checkout code
+      uses: actions/checkout@v3
+    
+    - name: Set up jfrog
+      uses: jfrog/setup-jfrog-cli@v3
+      with:
+        version: latest
+        
+    - name: Jfrog version
+      run: jf --version
