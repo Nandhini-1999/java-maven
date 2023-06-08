@@ -60,6 +60,10 @@ jobs:
        jf --version
        jf rt ping
        
+    - name: artifact
+      uses: ./.github/workflows/package.yml
+      with:
+        package-goal: 'clean package -DskipTests=true'
        
     - name: Publish JAR artifact to Artifactory
       run: |
