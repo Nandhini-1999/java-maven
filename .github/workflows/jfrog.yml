@@ -37,5 +37,25 @@ jobs:
       with:
         version: latest
         
+    - name: URL check
+      uses: jfrog/setup-jfrog-cli@v3
+      env:
+        JF_URL: https://jfrog.phvr.co.in
+        JF_USER: admin
+        JF_PASSWORD: Admin@123
+
+    
+    # Basic authentication credentials
+#         JF_URL: ${{ secrets.JF_URL }}
+#         JF_USER: ${{ secrets.JF_USER }}
+#         JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+#     or
+#     # JFrog Platform access token
+#     JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+
+            
+        
     - name: Jfrog version
-      run: jf --version
+      run: |
+       jf --version
+       jf rt ping
