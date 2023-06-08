@@ -63,5 +63,5 @@ jobs:
        
     - name: Publish JAR artifact to Artifactory
       run: |
-        jfrog rt u -T target/*.jar https://jfrog.phvr.co.in/artifactory/demo-maven/demo.jar --url=https://jfrog.phvr.co.in --user=admin --password=Admin@123
+        jfrog rt u target/*.jar https://jfrog.phvr.co.in/artifactory/demo-maven/demo.jar --url=https://jfrog.phvr.co.in --user=admin --password=Admin@123
 
