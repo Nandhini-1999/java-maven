@@ -42,11 +42,13 @@ jobs:
 
       - name: Tag Docker image
         run: |
-         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 215099615090.dkr.ecr.us-east-1.amazonaws.com
-         docker tag nandhini1999/sample:latest 215099615090.dkr.ecr.us-east-1.amazonaws.com/demo:latest
+         aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 215099615090.dkr.ecr.ap-south-1.amazonaws.com
+         docker tag nandhini1999/sample:latest 215099615090.dkr.ecr.ap-south-1.amazonaws.com/demo:latest
+#         aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 215099615090.dkr.ecr.us-east-1.amazonaws.com
+#         docker tag nandhini1999/sample:latest 215099615090.dkr.ecr.us-east-1.amazonaws.com/demo:latest
 
       - name: Push Docker image to ECR
-        run: docker push 215099615090.dkr.ecr.us-east-1.amazonaws.com/demo:latest
+        run: docker push 215099615090.dkr.ecr.ap-south-1.amazonaws.com/demo:latest
 #         run: docker push public.ecr.aws/f4w6n6b1/my-ecr-repo:latest
         
          
