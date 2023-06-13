@@ -19,11 +19,20 @@ jobs:
       - name: Run Build
         run: echo "Success"
       
-      - name: job
-        if: on_failure
-        run:
-          gitlab issue create --title "Pipeline Failure" --description "The pipeline has failed."
-  
+      - name: Create issue on success
+        if: ${{ success() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Pipeline Success" --body "The pipeline has succeeded."
+
+      - name: Create issue on failure
+        if: ${{ failure() }}
+        env:
+         GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create --title "Pipeline Failure" --body "The pipeline has failed."
+
   
 #   job2:
 #     name: Second Job
