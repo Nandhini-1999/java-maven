@@ -1,4 +1,4 @@
-name: Java-CD
+name: JAVA- CD
 
 on:
 #   push:
@@ -7,37 +7,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-push-image:
-    runs-on: ubuntu-latest
+  check:
+    uses: ./.github/workflows/sequence.yml
+    
+  docker-build_push:
+    needs: check
+    uses: ./.github/workflows/docker.yml
+      
+  push-to-ecr:
+    needs: docker-build_push
+    uses: ./.github/workflows/aws-ecr.yml
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Build
-        run: |
-           mvn -B -DskipTests clean package
-           
-      - name: Test
-        run: |
-           mvn test
-
-      - name: Publish Test Results
-        if: always()
-        run: |
-          mkdir -p test-reports
-          cp -r target/surefire-reports test-reports
-          ls -R test-reports
-          echo "::set-output name=report-path::test-reports"
-
-      - name: Upload Test Reports
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: Test Reports
-          path: test-reports
-
-      - name: Docker
-        uses: actions/hello-world-docker-action@main
-
-
+  deploy-to-ecs:
+    needs: docker-build_push
+    uses: ./.github/workflows/aws-ecs.yml
