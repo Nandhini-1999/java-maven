@@ -20,8 +20,8 @@ jobs:
   push-to-ecr:
 #     needs: docker-build_push
     uses: ./.github/workflows/aws-ecr.yml
-    with:
-      region: 'us-east-1'
+#     with:
+#       region: 'us-east-1'
 
   deploy-to-ecs:
     needs: push-to-ecr
