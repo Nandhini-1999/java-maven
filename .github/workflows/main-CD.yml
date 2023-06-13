@@ -13,6 +13,9 @@ jobs:
   docker-build_push:
     needs: check
     uses: ./.github/workflows/docker.yml
+    with:
+      username: 'nandhini1999'
+      password: 'Nandhini_99'
       
   push-to-ecr:
     needs: docker-build_push
