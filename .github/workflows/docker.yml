@@ -17,10 +17,12 @@ on:
         default: "."
       username:
          description: "Username"
+         type: string
          required: true
          default: "nandhini1999"
       password:
          description: "Password"
+         type: string
          required: true
          default: "Nandhini_99"
  
