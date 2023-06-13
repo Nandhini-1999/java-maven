@@ -15,6 +15,10 @@ on:
          description: "Password"
          required: true
          default: "Nandhini_99"
+      region:
+         description: "region"
+         required: true
+         default: ""
   
 
 jobs:
@@ -30,7 +34,7 @@ jobs:
         env:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: us-east-1
+          aws-region: ${{ inputs.region }}
           
       - name: Login to DockerHub
         uses: docker/login-action@v2
