@@ -1,7 +1,7 @@
 name: "Setup Docker"
 on:
   workflow_dispatch:
-#   workflow_call:
+  workflow_call:
     inputs:
       runs_on:
         required: false
