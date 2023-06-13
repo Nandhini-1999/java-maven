@@ -19,5 +19,5 @@ jobs:
     uses: ./.github/workflows/aws-ecr.yml
 
   deploy-to-ecs:
-    needs: docker-build_push
+    needs: push-to-ecr
     uses: ./.github/workflows/aws-ecs.yml
