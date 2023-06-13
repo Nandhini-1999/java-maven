@@ -1,0 +1,9 @@
+name: Example
+
+on:
+      
+  workflow_dispatch:
+
+jobs:
+  check:
+    uses: ./.github/workflows/sonarcloud.yml
