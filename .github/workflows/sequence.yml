@@ -17,12 +17,12 @@ jobs:
         uses: actions/checkout@v2
       
       - name: Run Build
-#         run: echo "Success"
+        run: echo "Success"
         
       - name: Create issue on failure
-        if: ${{ failure() }}
+        if: ${{ success() }}
         run: |
-          gh issue create --title "Pipeline Failure" --body "The pipeline has failed."
+          gh issue create --title "Pipeline Success" --body "The pipeline has succeeded."
   
   
 #   job2:
