@@ -9,16 +9,19 @@ on:
      inputs:
       username:
          description: "Username"
+         type: string
          required: true
          default: "nandhini1999"
       password:
          description: "Password"
+         type: string
          required: true
          default: "Nandhini_99"
       region:
          description: "region"
+         type: string
          required: true
-         default: ""
+         default: "us-east-1"
   
 
 jobs:
