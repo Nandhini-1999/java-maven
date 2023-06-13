@@ -5,7 +5,7 @@ on:
 #     branches:
 #       - main
     workflow_dispatch:
-
+    workflow_call:
 jobs:
   test_reports_job:
     runs-on: ubuntu-latest
