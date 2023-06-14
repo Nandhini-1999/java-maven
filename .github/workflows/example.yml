@@ -1,9 +1,12 @@
 name: Example
 
-on:
-      
+on:     
   workflow_dispatch:
 
 jobs:
-  check:
-    uses: ./.github/workflows/sonarqube.yml
+  call-scan:
+    uses: he329178/nodejs/.github/workflows/sonar-scan.yml@master
+    with:
+      SONAR_HOST_URL : 'http://65.0.128.192:9000/'
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
