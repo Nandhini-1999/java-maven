@@ -27,7 +27,8 @@ jobs:
     needs: check
     uses: ./.github/workflows/sonarqube.yml
     with:
-      token: 'squ_b5eba5e75d4ca575e45af60454e1ac9ca9f09320'
+      token: ${{ secrets.SONAR_TOKEN }}
+#      token: 'squ_b5eba5e75d4ca575e45af60454e1ac9ca9f09320'
 
 #   maven-package:
 #     if: always()
