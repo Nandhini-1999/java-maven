@@ -1,0 +1,38 @@
+name: Build Summary
+
+on:
+#   push:
+#     branches:
+#       - main
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+#       - name: Build project
+#         run: |
+#           # Add your build commands here
+#           # For example: npm install && npm run build
+
+      - name: Run Sonar analysis
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          organization: gha-demo
+          token: ${{ secrets.SONAR_TOKEN }}
+
+#       - name: Publish artifacts to Artifactory
+#         run: |
+#           # Add your Artifactory publishing commands here
+#           # For example: curl -u ARTIFACTORY_USERNAME:ARTIFACTORY_PASSWORD -T file.jar https://your-artifactory-url/repository/repo-name/file.jar
+
+      - name: Create build summary
+        run: |
+          echo "Build Summary"
+          echo "-------------"
+          echo "Build successful!"
+          echo "Sonar analysis results: [Sonar Dashboard](https://sonarcloud.io/dashboard?id=my-app)"
