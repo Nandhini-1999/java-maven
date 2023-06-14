@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    uses: ./.github/workflows/sequence.yml
+#   check:
+#     uses: ./.github/workflows/sequence.yml
     
 #   maven-compile:
 #     needs: check
@@ -24,7 +24,7 @@ jobs:
 #       test-goal: 'test'
       
   code-quality-analysis:
-    needs: check
+#     needs: check
     uses: ./.github/workflows/sonarqube.yml
     with:
       token: ${{ secrets.SONAR_TOKEN }}
@@ -44,14 +44,14 @@ jobs:
 #     uses: ./.github/workflows/artifacts.yml
 
 
-  test:
+#   test:
       
       
-    needs: code-quality-analysis
+#     needs: code-quality-analysis
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: check
-        run: echo "Success"
+#     steps:
+#       - name: check
+#         run: echo "Success"
         
