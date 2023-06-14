@@ -11,7 +11,7 @@ on:
       host_url:
         required: false
         type: string
-        default: "http://65.0.128.192:9000"
+        default: ""
       token:
         required: false
         type: string
