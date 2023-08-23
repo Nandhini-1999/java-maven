@@ -1,0 +1,11 @@
+@Library('shared-library-nandhini') _
+
+node {
+    stage('Checkout') {
+        checkout scm
+    }
+
+    stage('Run Jenkinsfileall.groovy') {
+        jenkinsfileAll()
+    }
+}
